@@ -1,6 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'wincent/command-t'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'shougo/deoplete-clangx'
 Plug 'Shougo/neosnippet.vim'
