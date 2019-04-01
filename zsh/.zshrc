@@ -79,7 +79,12 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
-
+TERM=xterm-256color
+# backspace
+if [[ -n $terminfo[kbs] ]]; then
+    bindkey          "$terminfo[kbs]"   backward-delete-char
+    bindkey -M vicmd "$terminfo[kbs]"   backward-char
+fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -97,3 +102,6 @@ alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias ll="ls -la"
 alias vim="nvim"
 alias vinit="nvim ~/.dotfiles/nvim/init.vim"
+alias claire="cd ~/work/claire_base"
+alias i3config="nvim ~/.dotfiles/i3/config"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
