@@ -1,5 +1,4 @@
 call plug#begin('~/.vim/plugged')
-"Plug 'Valloric/YouCompleteMe'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mfukar/robotframework-vim'
 Plug 'shougo/deoplete-clangx'
@@ -32,7 +31,21 @@ set background=dark
 set scrolloff=5
 set sidescrolloff=5
 
+au VimEnter * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+au VimLeave * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+
 nnoremap <F2> :<C-u>NERDTreeToggle<CR>
+nnoremap <C-p> :<C-u>Files<CR>
+nnoremap <leader>b :<C-u>Buffers<CR>
+nnoremap <F12> :<C-u>Rg <C-R><C-W><CR>
+nnoremap <Esc> :<C-u>nohlsearch<CR>
+
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" Neosnippet stuff
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
     command! -bang -nargs=* Rg
@@ -49,18 +62,7 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'down': '10' }
-nnoremap <C-p> :<C-u>Files<CR>
-nnoremap <leader>b :<C-u>Buffers<CR>
-nnoremap <F12> :<C-u>Rg <C-R><C-W><CR>
-nnoremap <Esc> :<C-u>nohlsearch<CR>
-au VimEnter * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-au VimLeave * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 let g:deoplete#enable_at_startup = 1
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" Neosnippet stuff
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
