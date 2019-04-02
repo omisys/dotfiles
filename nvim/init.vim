@@ -1,14 +1,15 @@
 call plug#begin('~/.vim/plugged')
-
+"Plug 'Valloric/YouCompleteMe'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'mfukar/robotframework-vim'
 Plug 'shougo/deoplete-clangx'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'w0ng/vim-hybrid'
 Plug 'junegunn/fzf.vim' 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'w0ng/vim-hybrid'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'tpope/vim-surround'
 Plug 'bling/vim-bufferline'
@@ -26,8 +27,8 @@ syntax on
 set clipboard+=unnamedplus
 set ignorecase
 set smartcase
-set background=dark
 colorscheme hybrid
+set background=dark
 set scrolloff=5
 set sidescrolloff=5
 
@@ -54,3 +55,15 @@ nnoremap <F12> :<C-u>Rg <C-R><C-W><CR>
 nnoremap <Esc> :<C-u>nohlsearch<CR>
 au VimEnter * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 au VimLeave * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" Neosnippet stuff
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif

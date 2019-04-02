@@ -85,6 +85,9 @@ if [[ -n $terminfo[kbs] ]]; then
     bindkey          "$terminfo[kbs]"   backward-delete-char
     bindkey -M vicmd "$terminfo[kbs]"   backward-char
 fi
+
+bindkey -s '^g' "git add -u; git commit -v && git push"
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -104,4 +107,5 @@ alias vim="nvim"
 alias vinit="nvim ~/.dotfiles/nvim/init.vim"
 alias claire="cd ~/work/claire_base"
 alias i3config="nvim ~/.dotfiles/i3/config"
+alias work="cd ~/work"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
