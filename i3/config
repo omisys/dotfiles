@@ -420,3 +420,5 @@ mode "$mode_gaps_outer" {
 
 exec --no-startup-id .dotfiles/scripts/polybar.sh
 
+exec --no-startup-id xmodmap -e 'clear Lock'
+exec --no-startup-id xmodmap -e 'keycode 0x42=Escape'

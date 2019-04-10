@@ -1,7 +1,9 @@
 call plug#begin('~/.vim/plugged')
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mfukar/robotframework-vim'
+Plug 'tpope/vim-fugitive'
 Plug 'shougo/deoplete-clangx'
+Plug 'godlygeek/tabular'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'deoplete-plugins/deoplete-jedi'
@@ -21,6 +23,7 @@ set number
 set relativenumber
 set tabstop=4
 set shiftwidth=4
+set mouse=a
 set expandtab
 syntax on
 set clipboard+=unnamedplus
@@ -28,17 +31,22 @@ set ignorecase
 set smartcase
 colorscheme hybrid
 set background=dark
-set scrolloff=5
+set scrolloff=10
 set sidescrolloff=5
 
-au VimEnter * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-au VimLeave * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+"au VimEnter * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+"au VimLeave * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 nnoremap <F2> :<C-u>NERDTreeToggle<CR>
 nnoremap <C-p> :<C-u>Files<CR>
-nnoremap <leader>b :<C-u>Buffers<CR>
+nnoremap <F10> :<C-u>Buffers<CR>
 nnoremap <F12> :<C-u>Rg <C-R><C-W><CR>
 nnoremap <Esc> :<C-u>nohlsearch<CR>
+nnoremap <leader>f :<C-u>BLines<CR>
 
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
